@@ -2,18 +2,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('commentaire-form').addEventListener('submit', function(event) {
       event.preventDefault();
 
+      // déclation des variables à récupérer
       let firstName = document.getElementById('first-name').value;
       let lastName = document.getElementById('last-name').value;
       let message = document.getElementById('message').value;
       let errorMessage = document.getElementById('error-message');
-
+      
+      //Vérification des champs vides
       if (firstName === '' || lastName === '' || message === '') {
         errorMessage.style.display = 'block';
       } else {
         errorMessage.style.display = 'none';
 
         let commentList = document.getElementById('comment-list');
-
+        
+        //création du nouveau commentaire
         let newCommentaire = document.createElement('div');
         newCommentaire.classList.add('flex', 'space-x-4', 'text-sm', 'text-gray-500', 'py-10', 'border-t', 'border-gray-200');
         newCommentaire.innerHTML = `
@@ -26,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         commentList.appendChild(newCommentaire);
 
+        // effacement des champs du commantaire
         document.getElementById('first-name').value = '';
         document.getElementById('last-name').value = '';
         document.getElementById('message').value = '';
